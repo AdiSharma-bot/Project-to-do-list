@@ -1,0 +1,156 @@
+@import url("./reset.css");
+@import url("./nav.css");
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+:root {
+  --font-color: #efefef;
+  --divider-color: #6d6a7c;
+  --accent-pink: #f800b2;
+  --selection-color: #e502a4;
+  --base-font-size: 1rem;
+  --header-font: "Press Start 2P", system-ui;
+  --para-font: "VT323", monospace;
+}
+
+/* Home Page Styling*/
+
+body {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+}
+div.ui-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url(../assets/katana-bg.png);
+  background-size: 100% 100%;
+  image-rendering: pixelated;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+div.tv-desk {
+  background-image: url(../assets/katana-bench.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 85%;
+  height: 100%;
+  position: relative;
+  left: 15%;
+}
+main.content-page {
+  width: 24%;
+  height: 36%;
+  position: absolute;
+  top: 7%;
+  left: 45.5%;
+  border-radius: 7%;
+}
+div.content-bg {
+   width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  border-radius: 7%;
+  background-image: url(../assets/black-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 100%;
+}
+div.noise-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 7%;
+  background-image: url(../assets/Noise-group-crt.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 100%;
+  z-index: 1;
+  /* display: none; */
+}
+header.tv-header {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  top: 2%;
+}
+h1 {
+  color: var(--font-color);
+  font-family: var(--header-font);
+  font-size: calc(1rem + 4px);
+  text-align: center;
+  opacity: 82%;
+  padding-bottom: 10px;
+}
+div.seperator {
+  border-top: 2px dashed var(--divider-color);
+  border-bottom: 2px dashed var(--divider-color);
+  padding-top: 2px;
+  opacity: 70%;
+}
+section.content {
+  height: 22rem;
+  position: relative;
+  top: 5%;
+  z-index: 2;
+}
+ul.todo-list {
+  width: 100%;
+  position: relative;
+  height: 50%;
+  list-style-type: none;
+  padding-left: 0;
+}
+ul.todo-list li {
+  color: var(--font-color);
+  font-size: 1.4rem;
+  text-align: start;
+  width: 100%;
+  opacity: 82%;
+  padding-left: 1rem;
+  font-family: var(--para-font);
+  &:first-child {
+    background-color: var(--selection-color);
+  }
+}
+footer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  bottom: 65%;
+  height: 15%;
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    border-top: 2px dashed var(--divider-color);
+    border-bottom: 2px dashed var(--divider-color);
+    padding-top: 2px;
+    opacity: 70%;
+  }
+}
+footer p {
+  text-align: center;
+  height: 100%;
+  padding-top: 10px;
+  font-size: 0.8rem;
+  font-family: var(--header-font);
+  color: var(--font-color);
+}
+aside.tv-remote {
+  width: 15%;
+  height: 20%;
+  position: absolute;
+  bottom: 0;
+  right: 22%;
+  background: url(../assets/tv-remote.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 4;
+}

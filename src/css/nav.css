@@ -1,0 +1,264 @@
+/* Nav Styling */
+
+nav {
+  width: 75%;
+  height: 30%;
+  position: absolute;
+  bottom: 6%;
+  right: 5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+ul {
+  list-style-type: none;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+ul.nav-cassettes-1 {
+  transform: translateX(20px);
+}
+li {
+  display: block;
+  height: 3.5rem;
+  width: 14rem;
+  position: relative;
+  color: black;
+}
+button.cassette-btn {
+  width: 15rem;
+  height: 5rem;
+  position: absolute;
+  border: none;
+  perspective: 2000px;
+  perspective-origin: center center;
+  border: none;
+  background: none;
+  transition: all 300ms ease-in-out;
+  transform-style: preserve-3d;
+  &:hover {
+    filter: brightness(1.3) contrast(1.1) hue-rotate(10deg) saturate(1.2);
+  }
+}
+button.cassette-btn img {
+  transition: inherit;
+}
+button.cassette-btn:hover img:first-child {
+  transform: skewX(-5deg) rotateX(69deg) translateY(-10px);
+}
+button.cassette-btn:hover img:nth-child(2) {
+  transform: translateX(0.5px) translateY(-11.5px) translateZ(20px);
+  width: 96.5%;
+}
+button.cassette-btn:hover img:nth-child(3) {
+  transform: rotateY(100deg) translateZ(77px) translateY(-3px);
+  left: 60.5%;
+  width: 0%;
+}
+img:first-child {
+  width: 96.5%;
+  height: 33%;
+  transform: skewX(-48deg);
+}
+img:nth-child(2) {
+  width: 97%;
+  height: 37%;
+  transform: translateX(-15px);
+}
+img:nth-child(3) {
+  width: 32.5%;
+  height: 25%;
+  position: absolute;
+  transform: rotateY(55deg) rotateX(16deg) rotateZ(-23deg) translateZ(81px)
+    translateX(33px) translateY(29.5px) skewX(-42deg) skewY(0deg);
+  left: 40%;
+  top: 46%;
+}
+button.cassette-no-1 {
+  z-index: 6;
+  transform: translateY(27px) translateX(15px);
+  &:hover {
+    transform: translateY(42px) scale(1.1);
+  }
+}
+button.cassette-no-2 {
+  z-index: 5;
+  transform: translateY(3px);
+  &:hover {
+    transform: translateY(18px) scale(1.1);
+  }
+}
+button.cassette-no-3 {
+  z-index: 4;
+  transform: translateY(-25.5px);
+  &:hover {
+    transform: translateY(-5px) scale(1.1);
+  }
+}
+button.cassette-no-4 {
+  z-index: 3;
+  transform: translateY(-49px) translateX(10px);
+  &:hover {
+    transform: translateY(-35px) scale(1.1);
+  }
+}
+ul.nav-cassettes-2 button img:first-child {
+  transform: skewX(-12deg) translateX(2px);
+  width: 98%;
+  height: 24%;
+}
+ul.nav-cassettes-2 button img:nth-child(2) {
+  transform: translateX(-1px);
+}
+ul.nav-cassettes-2 button img:nth-child(3) {
+  transform: rotateY(80deg) rotateX(6deg) rotateZ(-13deg) translateZ(87px)
+    translateX(25px) translateY(7.5px) skewX(-41deg);
+  width: 37%;
+}
+button.cassette-no-5 {
+  z-index: 4;
+  transform: translateY(27px);
+  &:hover {
+    transform: translateY(48px) scale(1.1);
+    & img:first-child {
+      transform: translateX(-2px) rotateX(53deg) translateY(-11px);
+    }
+  }
+}
+button.cassette-no-6 {
+  z-index: 3;
+  &:hover {
+    transform: translateY(17px) scale(1.1);
+    & img:first-child {
+      transform: translateX(-2px) rotateX(53deg) translateY(-11px);
+    }
+  }
+}
+button.cassette-no-7 {
+  z-index: 2;
+  transform: translateY(-27px);
+  & img:nth-child(3) {
+    transform: rotateY(83deg) rotateX(6deg) rotateZ(-13deg) translateZ(87px)
+      translateX(25px) translateY(7.5px) skewX(-41deg) !important;
+    width: 35% !important;
+  }
+  & img:first-child {
+    width: 96.5% !important;
+  }
+  &:hover {
+    transform: translateY(-10px) scale(1.1);
+    & img:first-child {
+      transform: translateX(-2px) rotateX(53deg) translateY(-11px);
+    }
+    & img:nth-child(3) {
+      width: 0% !important;
+      transform: rotateY(100deg) translateZ(77px) translateY(-3px) !important;
+    }
+  }
+}
+button.cassette-no-8 {
+  z-index: 1;
+  transform: translateY(-52px);
+  & img:nth-child(3) {
+    width: 0% !important;
+  }
+  & img:first-child {
+    width: 96.5% !important;
+    transform: skewX(-6deg) !important;
+  }
+  &:hover {
+    transform: translateY(-36px) scale(1.1);
+    & img:first-child {
+      transform: translateX(-2px) rotateX(-22deg) translateY(-50px);
+    }
+  }
+}
+ul.nav-cassettes-3 button {
+  & img:first-child {
+    transform: skewX(40deg) translateX(1px);
+  }
+  & img:nth-child(2) {
+    transform: translateX(12px);
+  }
+  & img:nth-child(3) {
+    transform: rotateY(253deg) rotateZ(-24deg) translateZ(112px)
+      translateX(39.5px) translateY(8.5px) skewX(-42deg) skewY(0deg);
+    width: 26.5%;
+    height: 30%;
+  }
+  &:hover {
+    & img:nth-child(3) {
+      transform: rotateY(276deg) rotateZ(-24deg) translateZ(112px) translateX(39.5px) translateY(8.5px) skewX(-42deg) skewY(0deg);
+      left: 51.5%;
+      width: 0%;
+    }
+  }
+}
+button.cassette-no-9 {
+  z-index: 4;
+  transform: translateY(27.5px);
+  &:hover {
+    transform: translateY(44px) scale(1.1);
+  }
+}
+button.cassette-no-10 {
+  z-index: 3;
+  transform: translateX(10px);
+  &:hover {
+    transform: translateY(19px) scale(1.1);
+  }
+}
+button.cassette-no-11 {
+  z-index: 2;
+  transform: translateY(-26px) translateX(10px);
+  &:hover {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+button.cassette-no-12 {
+  z-index: 1;
+  transform: translateY(-53px);
+  &:hover {
+    transform: translateY(-34px) scale(1.1);
+  }
+}
+span.btn-text {
+  font-size: calc(var(--base-font-size) + 2px);
+  position: absolute;
+  display: inline-block;
+  width: 59%;
+  right: 19%;
+  color: black;
+  background: #ae96b2;
+  height: 25%;
+  padding-right: 2rem;
+  text-align: center;
+  vertical-align: middle;
+  transform: translateY(-25px);
+  padding-bottom: 14px;
+  transition: inherit;
+  bottom: -9%;
+}
+span.btn-text p {
+  transform: translateY(-8px);
+  color: black !important;
+  font-family: var(--para-font);
+  font-size: 1.5rem;
+}
+
+button.cassette-btn:hover span.btn-text {
+  bottom: 6%;
+  right: 14%;
+}
+ul.nav-cassettes-2 button.cassette-btn span.btn-text {
+  bottom: calc(-3.5678% - 1px);
+  right: 15%;
+}
+ul.nav-cassettes-2 button.cassette-btn:hover span.btn-text {
+  bottom: 10%;
+}
+ul.nav-cassettes-3 button.cassette-btn span.btn-text {
+  right: 10%;
+}

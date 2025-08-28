@@ -1,0 +1,34 @@
+{
+  "name": "project-to-do-list",
+  "version": "1.0.0",
+  "description": "Add your day to day tasks in this to do list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open --config ./build-utils/webpack.dev.js",
+    "build": "webpack --config ./build-utils/webpack.prod.js",
+    "deploy": "git push origin `git subtree split --prefix dist`:gh-pages --force"
+  },
+  "keywords": [
+    "katana",
+    "zero",
+    "theme",
+    "project",
+    "to",
+    "do",
+    "list",
+    "webpack"
+  ],
+  "author": "Advitiya Upadhaya",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.101.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2",
+    "webpack-merge": "^6.0.1"
+  }
+}
