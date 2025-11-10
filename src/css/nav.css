@@ -36,27 +36,34 @@ button.cassette-btn {
   perspective-origin: center center;
   border: none;
   background: none;
+  text-transform: capitalize;
   transition: all 300ms ease-in-out;
   transform-style: preserve-3d;
-  &:hover {
+  &:hover,
+  &.selected {
     filter: brightness(1.3) contrast(1.1) hue-rotate(10deg) saturate(1.2);
+    & img:first-child {
+      transform: skewX(-5deg) rotateX(69deg) translateY(-10px);
+    }
+    & img:nth-child(2) {
+      transform: translateX(0.5px) translateY(-11.5px) translateZ(20px);
+      width: 96.5%;
+    }
+    & img:nth-child(3) {
+      transform: rotateY(100deg) translateZ(77px) translateY(-3px);
+      left: 60.5%;
+      width: 0%;
+    }
+    & span.btn-text {
+      bottom: 6%;
+      right: 14%;
+    }
   }
 }
 button.cassette-btn img {
   transition: inherit;
 }
-button.cassette-btn:hover img:first-child {
-  transform: skewX(-5deg) rotateX(69deg) translateY(-10px);
-}
-button.cassette-btn:hover img:nth-child(2) {
-  transform: translateX(0.5px) translateY(-11.5px) translateZ(20px);
-  width: 96.5%;
-}
-button.cassette-btn:hover img:nth-child(3) {
-  transform: rotateY(100deg) translateZ(77px) translateY(-3px);
-  left: 60.5%;
-  width: 0%;
-}
+
 img:first-child {
   width: 96.5%;
   height: 33%;
@@ -79,29 +86,33 @@ img:nth-child(3) {
 button.cassette-no-1 {
   z-index: 6;
   transform: translateY(27px) translateX(15px);
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(42px) scale(1.1);
   }
 }
 button.cassette-no-2 {
   z-index: 5;
   transform: translateY(3px);
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(18px) scale(1.1);
   }
 }
 button.cassette-no-3 {
   z-index: 4;
   transform: translateY(-25.5px);
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(-5px) scale(1.1);
   }
 }
 button.cassette-no-4 {
   z-index: 3;
   transform: translateY(-49px) translateX(10px);
-  &:hover {
-    transform: translateY(-35px) scale(1.1);
+  &:hover,
+  &.selected {
+    transform: translateY(-32px) scale(1.1);
   }
 }
 ul.nav-cassettes-2 button img:first-child {
@@ -120,8 +131,9 @@ ul.nav-cassettes-2 button img:nth-child(3) {
 button.cassette-no-5 {
   z-index: 4;
   transform: translateY(27px);
-  &:hover {
-    transform: translateY(48px) scale(1.1);
+  &:hover,
+  &.selected {
+    transform: translateY(43px) scale(1.1);
     & img:first-child {
       transform: translateX(-2px) rotateX(53deg) translateY(-11px);
     }
@@ -129,7 +141,8 @@ button.cassette-no-5 {
 }
 button.cassette-no-6 {
   z-index: 3;
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(17px) scale(1.1);
     & img:first-child {
       transform: translateX(-2px) rotateX(53deg) translateY(-11px);
@@ -147,7 +160,8 @@ button.cassette-no-7 {
   & img:first-child {
     width: 96.5% !important;
   }
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(-10px) scale(1.1);
     & img:first-child {
       transform: translateX(-2px) rotateX(53deg) translateY(-11px);
@@ -168,7 +182,8 @@ button.cassette-no-8 {
     width: 96.5% !important;
     transform: skewX(-6deg) !important;
   }
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(-36px) scale(1.1);
     & img:first-child {
       transform: translateX(-2px) rotateX(-22deg) translateY(-50px);
@@ -188,9 +203,11 @@ ul.nav-cassettes-3 button {
     width: 26.5%;
     height: 30%;
   }
-  &:hover {
+  &:hover,
+  &.selected {
     & img:nth-child(3) {
-      transform: rotateY(276deg) rotateZ(-24deg) translateZ(112px) translateX(39.5px) translateY(8.5px) skewX(-42deg) skewY(0deg);
+      transform: rotateY(276deg) rotateZ(-24deg) translateZ(112px)
+        translateX(39.5px) translateY(8.5px) skewX(-42deg) skewY(0deg);
       left: 51.5%;
       width: 0%;
     }
@@ -199,28 +216,32 @@ ul.nav-cassettes-3 button {
 button.cassette-no-9 {
   z-index: 4;
   transform: translateY(27.5px);
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(44px) scale(1.1);
   }
 }
 button.cassette-no-10 {
   z-index: 3;
   transform: translateX(10px);
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(19px) scale(1.1);
   }
 }
 button.cassette-no-11 {
   z-index: 2;
   transform: translateY(-26px) translateX(10px);
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(-10px) scale(1.1);
   }
 }
 button.cassette-no-12 {
   z-index: 1;
   transform: translateY(-53px);
-  &:hover {
+  &:hover,
+  &.selected {
     transform: translateY(-34px) scale(1.1);
   }
 }
@@ -248,17 +269,19 @@ span.btn-text p {
   font-size: 1.5rem;
 }
 
-button.cassette-btn:hover span.btn-text {
-  bottom: 6%;
-  right: 14%;
-}
 ul.nav-cassettes-2 button.cassette-btn span.btn-text {
   bottom: calc(-3.5678% - 1px);
   right: 15%;
 }
-ul.nav-cassettes-2 button.cassette-btn:hover span.btn-text {
-  bottom: 10%;
+ul.nav-cassettes-2 button.cassette-btn {
+  &:hover,
+  &.selected {
+    & span.btn-text {
+      bottom: 10%;
+    }
+  }
 }
+
 ul.nav-cassettes-3 button.cassette-btn span.btn-text {
   right: 10%;
 }
