@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --config ./build-utils/webpack.dev.js",
     "build": "webpack --config ./build-utils/webpack.prod.js",
-    "deploy": "git push origin `git subtree split --prefix dist`:gh-pages --force"
+    "deploy": "git subtree push --prefix dist origin gh-pages"
+
   },
   "keywords": [
     "katana",
