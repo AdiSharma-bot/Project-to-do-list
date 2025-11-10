@@ -76,14 +76,12 @@ div.noise-bg {
   z-index: 1;
   /* display: none; */
 }
-section.content {
-  display: none;
-}
 header.tv-header {
   width: 100%;
   position: relative;
   z-index: 2;
   top: 0%;
+  text-transform: capitalize;
 }
 h1 {
   color: var(--font-color);
@@ -104,6 +102,13 @@ section.content {
   position: relative;
   top: 5%;
   z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms ease;
+  &.show {
+    opacity: 0.85;
+    visibility: visible;
+  }
 }
 ul.todo-list {
   width: 100%;
@@ -113,17 +118,44 @@ ul.todo-list {
   padding-left: 0;
   top: 1%;
   opacity: 0;
+  visibility: hidden;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &.show {
+    opacity: 0.85;
+    visibility: visible;
+  }
 }
 ul.todo-list li {
   color: var(--font-color);
   font-size: 1.4rem;
   text-align: start;
   width: 100%;
-  opacity: 82%;
+  opacity: inherit;
+  visibility: inherit;
   padding-left: 1rem;
   font-family: var(--para-font);
-  &:first-child {
+  cursor: pointer;
+  &::before {
+    content: "[ ]";
+    margin-right: 10px;
+    opacity: inherit;
+    visibility: inherit;
+  }
+  &:hover {
     background-color: var(--selection-color);
+  }
+  & span.completed {
+    display: block;
+    width: 3%;
+    height: 20%;
+    position: absolute;
+    background-color: var(--font-color);
+    top: 11.5px;
+    left: 24.5px;
+    border-radius: 50%;
   }
 }
 article.to-do-details {
@@ -133,14 +165,14 @@ article.to-do-details {
   bottom: 47%;
   display: flex;
   flex-direction: column;
-
   font-size: 1.2rem;
   font-family: var(--para-font);
   color: var(--font-color);
-
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms ease;
   & p {
     margin: 0;
-    opacity: 75%;
     padding-left: 2rem;
     height: 100%;
     width: 100%;
@@ -149,11 +181,15 @@ article.to-do-details {
       position: absolute;
       left: 3px;
     }
+    &.show {
+      opacity: 0.85;
+      visibility: visible;
+    }
   }
   & p.priority-lvl {
     & span {
       display: inline-block;
-      width: 2.5rem;
+      width: 4.5rem;
       letter-spacing: 1px;
       text-align: center;
       color: rgba(248, 0, 178, 0.83); /* hot pink shade */
@@ -165,19 +201,69 @@ article.to-do-details {
     line-height: 1;
     overflow-wrap: break-word;
   }
-  & p.due-date::after {
-    content: "__ __ ____";
+  & p.due-date {
+    & span.date {
+      display: inline-block;
+      width: 6.3rem;
+      padding-left: 15.5px;
+    }
+    &::after {
+      content: "__ __ ____";
+      position: absolute;
+      right: 7rem;
+      top: 2.61rem;
+    }
+  }
+  & div.todo-btns {
     position: absolute;
-    right: 7.5rem;
-    top: 2.255rem;
+    bottom: -2.3rem;
+    height: 22%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-top: 4px;
+    opacity: 0;
+    visibility: hidden;
+    &.show {
+      opacity: 0.85;
+      visibility: visible;
+    }
+    & button {
+      background-color: transparent;
+      border: none;
+      font-family: var(--header-font);
+      font-size: 0.8rem;
+      color: var(--font-color);
+      opacity: 85%;
+      &:hover {
+        transform: scale(1.05);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      border: 2px dashed var(--divider-color);
+      bottom: 1.8rem;
+      left: 0;
+      width: 100%;
+      padding-top: 2px;
+      opacity: 70%;
+    }
   }
 }
 footer {
   position: relative;
   z-index: 1;
   width: 100%;
-  bottom: 45.5%;
+  bottom: 46.5%;
   height: 15%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms ease;
   &::before {
     content: "";
     display: block;
@@ -187,14 +273,25 @@ footer {
     padding-top: 2px;
     opacity: 70%;
   }
-}
-footer p {
-  text-align: center;
-  height: 100%;
-  padding-top: 10px;
-  font-size: 0.8rem;
-  font-family: var(--header-font);
-  color: var(--font-color);
+  &.show {
+    opacity: 0.85;
+    visibility: visible;
+  }
+  & button {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: var(--font-color);
+    font-family: var(--header-font);
+    font-size: 0.8rem;
+    padding-top: 5px;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+  }
 }
 
 /* Remote nav styling*/
@@ -290,617 +387,7 @@ button.back-btn {
       0 1px 2px rgba(0, 0, 0, 0.35);
   }
 }
-
-/* Form Styling */
-
-form {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-/* Form starting index styling */
-article.entry-type {
-  opacity: 0;
-  visibility: hidden;
-  /* border: 1px solid blanchedalmond; */
-  height: 100%;
-  & h3 {
-    /* border: 1px solid var(--accent-pink); */
-    font-family: var(--header-font);
-    font-size: 0.9rem;
-    height: 22%;
-    display: flex;
-    align-items: center;
-    color: var(--font-color);
-    opacity: 85%;
-
-    &::after {
-      content: "";
-      border: 2px dashed var(--divider-color);
-      display: block;
-      width: 100%;
-      position: absolute;
-      top: 22%;
-      height: 1.9%;
-      opacity: 80%;
-    }
-  }
-}
-p.tape {
-  margin-top: 2rem;
-  &::before {
-    content: "[1]";
-    position: absolute;
-    padding: 0;
-    left: 0;
-  }
-}
-p.tape,
-p.objective {
-  height: 15%;
-  font-size: 0.8rem;
-  font-weight: 800;
-  font-family: var(--header-font);
-  color: var(--font-color);
-  opacity: 85%;
-  padding-left: 4rem;
-  padding-top: 10px;
-  letter-spacing: 2px;
-}
-p.objective {
-  background-color: var(--accent-pink);
-  &::before {
-    content: "[2]";
-    position: absolute;
-    padding: 0;
-    left: 0;
-  }
-}
-article.entry-type button[type="button"] {
-  border: none;
-  position: absolute;
-  bottom: 0;
-  left: 9%;
-  width: 80%;
-  height: 13%;
-  font-size: 0.9rem;
-  font-family: var(--header-font);
-  background: none;
-  color: var(--font-color);
-  &::before {
-    content: "";
-    border: 2px dashed var(--divider-color);
-    display: block;
-    width: 22.8rem;
-    position: absolute;
-    top: -5px;
-    left: -31.5px;
-    height: 12%;
-    opacity: 70%;
-  }
-}
-
-/* Core Parameters Styling */
-
-fieldset {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-between;
-  border: none;
-  padding: 0;
-  --bottom-border-color: #b5c0c091;
-  opacity: 0;
-  & legend {
-    position: absolute;
-    width: 100%;
-    height: 20%;
-    font-family: var(--header-font);
-    color: var(--font-color);
-    font-size: 0.85rem;
-    padding-left: 3rem;
-    padding-right: 5rem;
-    padding-top: 5px;
-
-    &::before {
-      content: "//";
-      position: absolute;
-      left: 15px;
-    }
-    &::after {
-      content: "";
-      width: 100%;
-      position: absolute;
-      border-top: 2px dashed var(--divider-color);
-      border-bottom: 2px dashed var(--divider-color);
-      left: 0;
-      bottom: 0;
-      padding: 1px;
-      opacity: 65%;
-    }
-  }
-
-  label[for="title"] {
-    height: 20%;
-    position: absolute;
-    width: 100%;
-    top: 3.2rem;
-    display: flex;
-    flex-direction: column;
-    padding-left: 2rem;
-    opacity: 85%;
-    & input[type="text"] {
-      border: none;
-      border-bottom: 4px solid var(--bottom-border-color);
-      background-color: transparent;
-      width: 5%;
-      outline: none;
-      margin-left: 0.9rem;
-
-      transform: translateY(-6px);
-      &:focus {
-        outline: none;
-      }
-    }
-    &::before {
-      content: ">";
-      display: block;
-      position: absolute;
-      font-size: 0.8rem;
-      color: var(--font-color);
-      top: 33px;
-      left: 9%;
-      font-family: var(--header-font);
-    }
-    span {
-      display: inline-block;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      font-family: var(--header-font);
-      color: var(--font-color);
-      padding-left: 8px;
-      padding-top: 10px;
-      &::before {
-        content: ">>";
-        display: block;
-        position: absolute;
-        left: 9px;
-        font-family: var(--header-font);
-        font-size: 0.8rem;
-        top: 8px;
-        color: var(--font-color);
-      }
-    }
-  }
-  & fieldset.lvl {
-    all: initial;
-    height: 20%;
-    position: absolute;
-    top: 6.5rem;
-    width: 100%;
-    opacity: 85%;
-    & legend {
-      all: initial;
-      position: absolute;
-      color: var(--font-color);
-      left: 10%;
-      text-transform: uppercase;
-      font-family: var(--header-font);
-      font-size: 0.8rem;
-      padding-top: 10px;
-      padding-left: 0px;
-      &::before {
-        content: ">>";
-        position: absolute;
-        left: -28px;
-        top: 8px;
-        font-size: 0.8rem;
-        font-family: var(--header-font);
-      }
-      &::after {
-        all: initial;
-      }
-    }
-    label {
-      position: absolute;
-      top: 55%;
-      left: 10%;
-      font-family: var(--para-font);
-      font-size: 1.3rem;
-      color: rgba(239, 239, 293, 0.6);
-
-      &.high {
-        left: 11%;
-        padding-left: 5px;
-        &::before {
-          content: ">";
-          position: absolute;
-          left: -10px;
-          font-family: var(--header-font);
-          color: var(--font-color);
-          font-size: 0.8rem;
-          top: 13%;
-        }
-      }
-      &.medium {
-        left: 38%;
-      }
-      &.low {
-        left: 60%;
-      }
-      & input[type="radio"] {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-      }
-      &:has(input[type="radio"]:checked) {
-        color: var(--accent-pink);
-      }
-    }
-  }
-  label[for="due-date"] {
-    position: absolute;
-    bottom: 21%;
-    width: 100%;
-    height: 16%;
-    display: flex;
-    flex-direction: column;
-    opacity: 85%;
-    & span {
-      color: var(--font-color);
-      font-family: var(--header-font);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      padding-left: 2.3rem;
-      &::before {
-        content: ">>";
-        position: absolute;
-        font-family: var(--header-font);
-        font-size: 0.8rem;
-        left: 10px;
-      }
-    }
-    input[type="date"] {
-      background-color: transparent;
-      appearance: none;
-      border: none;
-      color: transparent;
-      pointer-events: none;
-      position: relative;
-      right: -2%;
-
-      bottom: 3%;
-      &::-webkit-calendar-picker-indicator {
-        background: url(../assets/calendar.png) center no-repeat;
-        opacity: 80%;
-        margin-right: 40%;
-      }
-      &:focus {
-        outline: none;
-      }
-      &::-webkit-datetime-edit-day-field {
-        position: relative;
-        left: 33%;
-        letter-spacing: 4px;
-      }
-      &::-webkit-datetime-edit-month-field {
-        position: relative;
-        left: 40%;
-        letter-spacing: 3px;
-      }
-      &::-webkit-datetime-edit-year-field {
-        position: relative;
-        left: 4rem;
-        letter-spacing: 6px;
-      }
-    }
-    &::before {
-      content: ">";
-      position: absolute;
-      font-family: var(--header-font);
-      color: var(--font-color);
-      font-size: 0.8rem;
-      bottom: 0;
-      left: 8%;
-    }
-    &::after {
-      content: "__/__/____";
-      position: absolute;
-      color: var(--font-color);
-      font-family: var(--header-font);
-      bottom: -4px;
-      left: 12%;
-    }
-    & span.formatted-date {
-      all: initial;
-      color: var(--font-color);
-      font-family: var(--para-font);
-      font-size: 1.4rem;
-      position: relative;
-      letter-spacing: 7.5px;
-      bottom: 61%;
-      left: 12%;
-      pointer-events: none;
-      opacity: 85%;
-      &::before {
-        all: initial;
-      }
-    }
-  }
-  div.form-btns {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 16%;
-    display: flex;
-    justify-content: space-between;
-    & button:first-child {
-      background-color: transparent;
-      border: none;
-      font-family: var(--header-font);
-      font-size: 0.7rem;
-      color: var(--font-color);
-      white-space: nowrap;
-      width: 40%;
-    }
-
-    & button:nth-child(2) {
-      background-color: transparent;
-      border: none;
-      font-family: var(--header-font);
-      font-size: 0.7rem;
-      color: var(--font-color);
-      white-space: pre;
-      &::after {
-        content: ">>";
-        position: absolute;
-        right: 5%;
-        margin-left: 10rem;
-        transition: all 300ms ease-in;
-        overflow-x: hidden;
-      }
-      &:hover::after {
-        transform: translateX(5px);
-      }
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      border: 2px dashed var(--divider-color);
-      top: 0;
-      width: 100%;
-      padding-top: 2px;
-      opacity: 70%;
-    }
-  }
-}
-
-fieldset.log-and-briefing {
-  all: initial;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  bottom: 0%;
-  opacity: 0;
-  & legend {
-    all: initial;
-    position: absolute;
-    width: 65%;
-    height: 20%;
-    font-family: var(--header-font);
-    color: var(--font-color);
-    font-size: 0.85rem;
-    padding-left: 3rem;
-    padding-right: 5rem;
-    padding-top: 8px;
-    line-height: 1.5;
-    text-transform: uppercase;
-  }
-  label[for="briefing"] {
-    height: 50%;
-    width: 100%;
-    position: absolute;
-    bottom: 20%;
-    display: flex;
-    flex-direction: column;
-    &::before {
-      content: ">";
-      position: absolute;
-      color: var(--font-color);
-      font-family: var(--header-font);
-      font-size: 0.7rem;
-      bottom: 6.2rem;
-      left: 1.5rem;
-    }
-    & span {
-      color: var(--font-color);
-      font-family: var(--header-font);
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      padding-left: 2.1rem;
-      &::before {
-        content: ">>";
-        font-family: var(--header-font);
-        position: absolute;
-        left: 5px;
-      }
-    }
-    & textarea {
-      background-color: transparent;
-      width: 87%;
-      margin-left: 2.2rem;
-      color: var(--font-color);
-      font-family: var(--para-font);
-      font-size: 1.5rem;
-    }
-  }
-  div.form-btns2 {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    height: 20%;
-    display: flex;
-    justify-content: space-between;
-    padding-right: 20px;
-    &::before {
-      content: "";
-      position: absolute;
-      border: 2px dashed var(--divider-color);
-      top: 0;
-      width: 100%;
-      padding-top: 2px;
-      opacity: 70%;
-    }
-    & .revert,
-    & button:nth-child(2) {
-      background-color: transparent;
-      width: 40%;
-      height: 100%;
-      white-space: pre;
-      font-size: 0.8rem;
-      color: var(--font-color);
-      font-family: var(--header-font);
-      border: none;
-    }
-    & .revert {
-      &::before {
-        content: "<<";
-        position: absolute;
-        left: -36.5%;
-        margin-left: 10rem;
-        transition: all 300ms ease-in;
-       
-      }
-      &:hover::before {
-        transform: translateX(-5px);
-      }
-    }
-    & button:nth-child(2) {
-      &::after {
-        content: ">>";
-        position: absolute;
-        right: 5%;
-        margin-left: 10rem;
-        transition: all 300ms ease-in;
-        overflow-x: hidden;
-      }
-      &:hover::after {
-        transform: translateX(5px);
-      }
-    }
-  }
-}
-fieldset.tape-assigning {
-  all: initial;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  
-  top: 0;
-  & legend {
-    font-size: 0.8rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    line-height: 1.5;
-  }
-  & fieldset {
-    all: inherit;
-    /* border: 1px solid blue; */
-    border: none;
-    height: 60%;
-    margin: 0 auto;
-    position: relative;
-    top: 3.5rem;
-    display: flex;
-    flex-flow: row wrap;
-    & legend {
-      all: initial;
-      position: absolute;
-      font-family: var(--header-font);
-      color: var(--font-color);
-      font-size: 0.75rem;
-      white-space: pre;
-      margin-top: 0.3rem;
-      &::after {
-        all: initial;
-      }
-      &::before {
-        all: initial;
-      }
-    }
-    div.tapes-container {
-      /* border: 1px solid white; */
-      padding-top: 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      padding-left: 0.5rem;
-      align-items: center;
-      justify-items: center;
-      column-gap: 17px;
-      label {
-        font-family: var(--para-font);
-        color: rgba(239, 239, 293, 0.6);
-        font-size: 1.45rem;
-        & input[type="radio"] {
-          position: absolute;
-          pointer-events: none;
-          opacity: 0;
-        }
-        &:has(input[type="radio"]:checked) {
-        color: var(--accent-pink);
-      }
-      }
-      & label:first-child {
-        position: absolute;
-        top: 0;
-        right: 2.5rem;
-        font-size: 1.45rem;
-      }
-    }
-  }
-  div.form-btns3 {
-    width: 100%;
-    height: 40%;
-    margin-top: 1.8rem;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    gap: 10px;
-    & button {
-      background-color: transparent;
-      font-family: var(--header-font);
-      font-size: 0.7rem;
-      color: var(--font-color);
-      border: none;
-      &.revert {
-        white-space: pre;
-        &::before {
-        content: "<<";
-        position: absolute;
-        left: -37.5%;
-        margin-left: 10rem;
-        transition: all 300ms ease-in;
-       
-      }
-      &:hover::before {
-        transform: translateX(-5px);
-      }
-      }
-    }
-  }
-   &::before {
-      content: "";
-      position: absolute;
-      border: 2px dashed var(--divider-color);
-      bottom: 3.8rem;
-      width: 100%;
-      padding-top: 2px;
-      opacity: 70%;
-    }
+article.show {
+  opacity: 0.85;
+  visibility: visible;
 }
