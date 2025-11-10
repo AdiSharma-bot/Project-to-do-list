@@ -1,4 +1,3 @@
-
 const makeFirstLetterCapital = {
   capitalWord(word) {
     return word.slice(0, 1).toUpperCase() + word.slice(1, word.length);
@@ -6,29 +5,35 @@ const makeFirstLetterCapital = {
 };
 const usefulMethods = {
   addSomething(addIn, addThis) {
-    addIn.push(addThis)
+    addIn.push(addThis);
   },
   removeById(array, id) {
-    const indexToRemove = array.findIndex(idToRemove => idToRemove.id === id);
+    const indexToRemove = array.findIndex((idToRemove) => idToRemove.id === id);
 
     if (indexToRemove !== -1) {
       array.splice(indexToRemove, 1);
     }
   },
   getById(array, id) {
-    const idToFind= array.find(idToFind => idToFind.id === id);
-    return idToFind
-  }
-}
+    const idToFind = array.find((idToFind) => idToFind.id === id);
+    return idToFind;
+  },
+};
+
+// Create Todo
 
 class Todo {
-  constructor({title, dueDate, priority, description, complete, id}) {
+  constructor({ title, dueDate, priority, description, complete, id }) {
     (this.title = title),
       (this.dueDate = dueDate),
       (this.priority = priority),
       (this.description = description),
       (this.isComplete = complete ?? false),
-      (this.id = id ?? "todo-" + Math.floor(Date.now() + Math.random()).toString().slice(-6)),
+      (this.id =
+        id ??
+        "todo-" +
+          Math.random().toString(36).slice(2, 11) +
+          Date.now().toString(36)),
       Object.assign(this, makeFirstLetterCapital);
   }
 
@@ -44,16 +49,6 @@ class Todo {
     this.priority = capitalCaseWord;
   }
 
-  showData() {
-    console.log(`Title: ${this.title}
-Termination-Date: ${this.dueDate}
-Threat-Level: ${this.priority}
-Description: ${this.description}
-Status: ${this.isComplete}`);
-
-    return `Here Dude! Have Fun`;
-  }
-
   toggleComplete() {
     this.isComplete = !this.isComplete;
   }
@@ -63,16 +58,20 @@ class Project {
   constructor(name, id) {
     this.name = name;
     this.todos = [];
-    this.id = id ?? "Project-" + Math.floor(Date.now() + Math.random()).toString().slice(-6);
+    this.id =
+      id ??
+      "Project-" +
+        Math.random().toString(36).slice(2, 11) +
+        Date.now().toString(36);
     Object.assign(this, usefulMethods);
   }
 
   addTodo(todo) {
-    this.addSomething(this.todos, todo)
+    this.addSomething(this.todos, todo);
   }
 
   removeTodoByID(todoId) {
-    this.removeById(this.todos, todoId)
+    this.removeById(this.todos, todoId);
   }
 
   getTodoByID(todoId) {
@@ -81,47 +80,72 @@ class Project {
   }
 }
 
- const App = {
-   projects: [],
-   currentProjectId: null,
-   methods: Object.assign({}, usefulMethods),
+const App = {
+  projects: [],
+  currentProjectId: null,
+  pendingProjectId: null,
+  currentTodoId: null,
+  methods: Object.assign({}, usefulMethods),
 
-   addProject(projectName) {
-    const project = new Project(projectName)
-     return this.methods.addSomething(this.projects, project);
-   },
+  addProject(projectName) {
+    const project = new Project(projectName);
+    return this.methods.addSomething(this.projects, project);
+  },
 
-   removeProject(projectId) {
+  removeProject(projectId) {
     this.methods.removeById(this.projects, projectId);
-   },
+  },
 
-   getProjectById(id) {
-    return this.methods.getById(this.projects, id)
-   },
+  getProjectById(id) {
+    return this.methods.getById(this.projects, id);
+  },
 
-   setCurrentProjectId(id) {
+  setCurrentProjectId(id) {
     this.currentProjectId = id;
-   },
-
-   getCurrentProject() {
+  },
+  getCurrentProjectData() {
     return this.methods.getById(this.projects, this.currentProjectId);
-   },
+  },
+  getPendingProjectData() {
+    return this.methods.getById(this.projects, this.pendingProjectId);
+  },
+  addTodoToProject(projectId, data) {
+    const project = this.getProjectById(projectId);
+    if (!project) {
+      console.error("No project found");
+      return;
+    }
+    project.addTodo(new Todo(data));
+  },
+  addTodoToCurrentProject(data) {
+    if (!this.currentProjectId) return;
+    this.addTodoToProject(this.currentProjectId, data);
+  },
+  saveProjectToLocalStorage() {
+    localStorage.setItem("Projects", JSON.stringify(this.projects));
+  },
+  loadProjectFromLocalStorage() {
+    const data = JSON.parse(localStorage.getItem("Projects"));
+    if (!data) return;
 
-   addTodoToCurrentProject({ title, description, dueDate, priority }) {
-    const getProject = this.getCurrentProject();
-    const createTodo = new Todo({
-      title: title,
-      description: description,
-      dueDate: dueDate,
-      priority: priority,
-    })
-    getProject.addTodo(createTodo);
-   },
+    this.projects = data.map((projData) => {
+      const newProject = new Project(projData.name, projData.id);
 
-   init() {
+      projData.todos.forEach(todoObj => {
+        const properTodo = new Todo({
+          title: todoObj.title,
+          description: todoObj.description,
+          priority: todoObj.priority,
+          dueDate: todoObj.dueDate,
+          complete: todoObj.isComplete,
+          id: todoObj.id
+        });
+        newProject.addTodo(properTodo)
+      });
+      return newProject;
+    });
+    
+  }
+};
 
-   }
- };
-
-export default App
-
+export default App;
