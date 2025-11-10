@@ -12,6 +12,7 @@ import render from "./modules/dom-manipulation"
 const imgElements = document.querySelectorAll(".cassette-image");
 imgElements.forEach((element, index) => {
   const imageType = index % 3;
+  element.loading = "lazy";
   if (imageType === 0) {
     element.src = cassetteUpperPart;
   }
