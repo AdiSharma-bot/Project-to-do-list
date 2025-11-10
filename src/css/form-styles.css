@@ -1,0 +1,749 @@
+/* Form Styling */
+
+form {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+
+  bottom: 21.9rem;
+  /* opacity: 0;
+  visibility: hidden; */
+}
+
+/* Form starting index styling */
+article.entry-type {
+  opacity: 0;
+  visibility: hidden;
+  /* border: 1px solid blanchedalmond; */
+  height: 100%;
+  & h3 {
+    /* border: 1px solid var(--accent-pink); */
+    font-family: var(--header-font);
+    font-size: 0.9rem;
+    height: 22%;
+    display: flex;
+    align-items: center;
+    color: var(--font-color);
+    opacity: 85%;
+
+    &::after {
+      content: "";
+      border: 2px dashed var(--divider-color);
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 22%;
+      height: 1.9%;
+      opacity: 80%;
+    }
+  }
+
+  & p.tape {
+    margin-top: 2rem;
+    &::before {
+      content: "[1]";
+      position: absolute;
+      padding: 0;
+      left: 0;
+    }
+  }
+  & p.tape,
+  p.objective {
+    height: 15%;
+    font-size: 0.8rem;
+    font-weight: 800;
+    font-family: var(--header-font);
+    color: var(--font-color);
+    opacity: 85%;
+    padding-left: 4rem;
+    padding-top: 10px;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+  & p.objective {
+    &::before {
+      content: "[2]";
+      position: absolute;
+      padding: 0;
+      left: 0;
+    }
+  }
+  & div.entry-btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    width: 100%;
+    transform: translateY(65px);
+    &::before {
+      all: initial;
+      content: "";
+      border: 2px dashed var(--divider-color);
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: 2.3rem;
+      left: 0;
+      padding-top: 1.5px;
+      opacity: 70%;
+    }
+    & button[type="button"] {
+      border: none;
+      width: 80%;
+      height: 13%;
+      font-size: 0.9rem;
+      font-family: var(--header-font);
+      background: none;
+      color: var(--font-color);
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+      
+    }
+  }
+}
+/* Core Parameters Styling */
+
+fieldset {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  border: none;
+  padding: 0;
+  --bottom-border-color: #b5c0c091;
+  visibility: hidden;
+  opacity: 0;
+  & legend {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    font-family: var(--header-font);
+    color: var(--font-color);
+    font-size: 0.85rem;
+    padding-left: 3rem;
+    padding-right: 5rem;
+    padding-top: 5px;
+
+    &::before {
+      content: "//";
+      position: absolute;
+      left: 15px;
+    }
+    &::after {
+      content: "";
+      width: 100%;
+      position: absolute;
+      border-top: 2px dashed var(--divider-color);
+      border-bottom: 2px dashed var(--divider-color);
+      left: 0;
+      bottom: 0;
+      padding: 1px;
+      opacity: 65%;
+    }
+  }
+
+  label[for="title"] {
+    height: 20%;
+    position: absolute;
+    width: 100%;
+    top: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    opacity: 85%;
+    & input[type="text"] {
+      border: none;
+      caret-color: var(--font-color);
+      color: var(--font-color);
+      background-color: transparent;
+      width: 55%;
+      outline: none;
+      margin-left: 0.9rem;
+      outline: none;
+      padding-top: 2px;
+      font-family: var(--para-font);
+      font-size: 1.3rem;
+      transform: translateY(-6px);
+      &:focus {
+        outline: none;
+      }
+    }
+    &::before {
+      content: ">";
+      display: block;
+      position: absolute;
+      font-size: 0.8rem;
+      color: var(--font-color);
+      top: 33px;
+      left: 9%;
+      font-family: var(--header-font);
+    }
+    span {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-family: var(--header-font);
+      color: var(--font-color);
+      padding-left: 8px;
+      padding-top: 10px;
+      &::before {
+        content: ">>";
+        display: block;
+        position: absolute;
+        left: 9px;
+        font-family: var(--header-font);
+        font-size: 0.8rem;
+        top: 8px;
+        color: var(--font-color);
+      }
+    }
+  }
+  & fieldset.lvl {
+    all: initial;
+    height: 20%;
+    position: absolute;
+    top: 6.5rem;
+    width: 100%;
+    opacity: 85%;
+    visibility: inherit;
+    & legend {
+      all: initial;
+      position: absolute;
+      color: var(--font-color);
+      left: 10%;
+      text-transform: uppercase;
+      font-family: var(--header-font);
+      font-size: 0.8rem;
+      padding-top: 10px;
+      padding-left: 0px;
+      visibility: inherit;
+      &::before {
+        content: ">>";
+        position: absolute;
+        left: -28px;
+        top: 8px;
+        font-size: 0.8rem;
+        font-family: var(--header-font);
+      }
+      &::after {
+        all: initial;
+      }
+    }
+    label {
+      position: absolute;
+      top: 55%;
+      left: 10%;
+      font-family: var(--para-font);
+      font-size: 1.3rem;
+      color: rgba(239, 239, 293, 0.6);
+
+      &.high {
+        left: 11%;
+        padding-left: 5px;
+        &::before {
+          content: ">";
+          position: absolute;
+          left: -10px;
+          font-family: var(--header-font);
+          color: var(--font-color);
+          font-size: 0.8rem;
+          top: 13%;
+        }
+      }
+      &.medium {
+        left: 38%;
+      }
+      &.low {
+        left: 60%;
+      }
+      & input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      &:has(input[type="radio"]:checked) {
+        color: var(--accent-pink);
+      }
+    }
+  }
+  label[for="due-date"] {
+    position: absolute;
+    bottom: 21%;
+    width: 100%;
+    height: 16%;
+    display: flex;
+    flex-direction: column;
+    opacity: 85%;
+    & span {
+      color: var(--font-color);
+      font-family: var(--header-font);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      padding-left: 2.3rem;
+      &::before {
+        content: ">>";
+        position: absolute;
+        font-family: var(--header-font);
+        font-size: 0.8rem;
+        left: 10px;
+      }
+    }
+    input[type="date"] {
+      background-color: transparent;
+      appearance: none;
+      border: none;
+      color: transparent;
+      pointer-events: none;
+      position: relative;
+      right: -2%;
+
+      bottom: 3%;
+      &::-webkit-calendar-picker-indicator {
+        background: url(../assets/calendar.png) center no-repeat;
+        opacity: 80%;
+        margin-right: 40%;
+      }
+      &:focus {
+        outline: none;
+      }
+      &::-webkit-datetime-edit-day-field {
+        position: relative;
+        left: 33%;
+        letter-spacing: 4px;
+      }
+      &::-webkit-datetime-edit-month-field {
+        position: relative;
+        left: 40%;
+        letter-spacing: 3px;
+      }
+      &::-webkit-datetime-edit-year-field {
+        position: relative;
+        left: 4rem;
+        letter-spacing: 6px;
+      }
+    }
+    &::before {
+      content: ">";
+      position: absolute;
+      font-family: var(--header-font);
+      color: var(--font-color);
+      font-size: 0.8rem;
+      bottom: 0;
+      left: 8%;
+    }
+    &::after {
+      content: "__/__/____";
+      position: absolute;
+      color: var(--font-color);
+      font-family: var(--header-font);
+      bottom: -4px;
+      left: 12%;
+    }
+    & span.formatted-date {
+      all: initial;
+      color: var(--font-color);
+      font-family: var(--para-font);
+      font-size: 1.4rem;
+      position: relative;
+      letter-spacing: 7.5px;
+      bottom: 61%;
+      left: 12%;
+      pointer-events: none;
+      opacity: 85%;
+      &::before {
+        all: initial;
+      }
+    }
+  }
+  div.form-btns {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 16%;
+    display: flex;
+    justify-content: space-between;
+    & button {
+       background-color: transparent;
+      border: none;
+      font-family: var(--header-font);
+      font-size: 0.7rem;
+      color: var(--font-color);
+      white-space: nowrap;
+      width: 40%;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      border: 2px dashed var(--divider-color);
+      top: 0;
+      width: 100%;
+      padding-top: 2px;
+      opacity: 70%;
+    }
+  }
+}
+
+fieldset.log-and-briefing {
+  all: initial;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0%;
+  opacity: 0;
+  visibility: hidden;
+
+  & legend {
+    all: initial;
+    position: absolute;
+    width: 65%;
+    height: 20%;
+    font-family: var(--header-font);
+    color: var(--font-color);
+    font-size: 0.85rem;
+    padding-left: 3rem;
+    padding-right: 5rem;
+    padding-top: 8px;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+  label[for="briefing"] {
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    bottom: 20%;
+    display: flex;
+    flex-direction: column;
+    &::before {
+      content: ">";
+      position: absolute;
+      color: var(--font-color);
+      font-family: var(--header-font);
+      font-size: 0.7rem;
+      bottom: 6.2rem;
+      left: 1.5rem;
+    }
+    & span {
+      color: var(--font-color);
+      font-family: var(--header-font);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      padding-left: 2.1rem;
+      &::before {
+        content: ">>";
+        font-family: var(--header-font);
+        position: absolute;
+        left: 5px;
+      }
+    }
+    & textarea {
+      background-color: transparent;
+      width: 87%;
+      margin-left: 2.2rem;
+      border: none;
+      color: var(--font-color);
+      font-family: var(--para-font);
+      font-size: 1.5rem;
+      caret-color: var(--font-color);
+      outline: none;
+    }
+  }
+  div.form-btns2 {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    &::before {
+      content: "";
+      position: absolute;
+      border: 2px dashed var(--divider-color);
+      top: 0;
+      width: 100%;
+      padding-top: 2px;
+      opacity: 70%;
+    }
+    & .log-revert,
+    & button:nth-child(2) {
+      background-color: transparent;
+      width: 40%;
+      height: 100%;
+      font-size: 0.8rem;
+      color: var(--font-color);
+      font-family: var(--header-font);
+      border: none;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+    
+  }
+}
+fieldset.tape-assigning {
+  all: initial;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  top: 0;
+  & legend {
+    font-size: 0.8rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    line-height: 1.5;
+  }
+  & fieldset {
+    all: inherit;
+    /* border: 1px solid blue; */
+    border: none;
+    height: 60%;
+    margin: 0 auto;
+    position: relative;
+    top: 3.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    & legend {
+      all: initial;
+      position: absolute;
+      font-family: var(--header-font);
+      color: var(--font-color);
+      font-size: 0.75rem;
+      white-space: pre;
+      margin-top: 0.3rem;
+      &::after {
+        all: initial;
+      }
+      &::before {
+        all: initial;
+      }
+    }
+    div.tapes-container {
+      padding-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      padding-left: 0.5rem;
+      font-family: var(--para-font);
+      align-items: center;
+      justify-items: center;
+      column-gap: 17px;
+      label {
+        font-family: var(--para-font);
+        color: rgba(239, 239, 293, 0.6);
+        font-size: 1.45rem;
+        & input[type="radio"] {
+          position: absolute;
+          pointer-events: none;
+          opacity: 0;
+        }
+        &:has(input[type="radio"]:checked) {
+          color: var(--accent-pink);
+        }
+      }
+      & label:first-child {
+        position: absolute;
+        top: 0;
+        right: 2.5rem;
+        font-size: 1.45rem;
+      }
+    }
+  }
+  div.form-btns3 {
+    width: 100%;
+    height: 40%;
+    margin-top: 1.8rem;
+    transform: translateY(118px);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    gap: 10px;
+    position: absolute;
+    & button {
+      background-color: transparent;
+      font-family: var(--header-font);
+      font-size: 0.7rem;
+      color: var(--font-color);
+      border: none;
+      padding-top: 10px;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    border: 2px dashed var(--divider-color);
+    bottom: 3.1rem;
+    width: 100%;
+    padding-top: 2px;
+    opacity: 70%;
+  }
+}
+fieldset.tape-name-assign {
+  all: initial;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  
+  & legend {
+    all: initial;
+    position: absolute;
+    top: 0;
+    height: 20%;
+    color: var(--font-color);
+    font-family: var(--header-font);
+    font-size: 0.7rem;
+    white-space: wrap;
+    padding-top: 5px;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 91%;
+    &::before {
+      left: 0;
+    }
+    & span:first-child {
+      padding-right: 1.5rem;
+      line-height: 1.3;
+    }
+    & span:nth-child(2) {
+      white-space: wrap;
+      width: 100%;
+      transform: translateX(-31px) translateY(5px);
+    }
+  }
+  & article {
+    margin-top: 4.5rem;
+    color: var(--font-color);
+    width: 100%;
+    font-family: var(--para-font);
+    opacity: 88%;
+
+    & p {
+      padding-left: 2.5rem;
+      font-size: 1.1rem;
+      margin-bottom: 1px;
+      & span {
+        text-shadow: 0 0 2px #000, 0 0 10px var(--accent-pink);
+        color: var(--accent-pink);
+      }
+    }
+    & p:first-child {
+      font-family: var(--header-font);
+      padding-left: 0.2rem;
+      font-size: 0.7rem;
+      margin-bottom: 5px;
+    }
+  }
+  & p.required-input {
+    color: var(--font-color);
+    font-family: var(--header-font);
+    font-size: 0.7rem;
+    padding-left: 2px;
+  }
+  & label {
+    color: var(--font-color);
+    transform: translateY(-8px);
+    font-family: var(--para-font);
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    margin-left: 8px;
+    font-size: 1.2rem;
+    padding-left: 1.9rem;
+
+    & input {
+      background-color: transparent;
+      border: none;
+      font-family: var(--para-font);
+      width: 50%;
+      margin-left: 15px;
+      outline: none;
+      caret-color: var(--font-color);
+      color: var(--font-color);
+    }
+    &::before {
+      content: ">";
+      display: block;
+      position: absolute;
+      font-size: 0.8rem;
+      color: var(--font-color);
+      top: 24px;
+      left: 9%;
+      font-family: var(--header-font);
+    }
+  }
+  & div.tape-btns {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    & button {
+      background-color: transparent;
+      border: none;
+      color: var(--font-color);
+      font-family: var(--para-font);
+      font-size: 1.4rem;
+      &:hover {
+        transform: scale(1.05);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+     &::before {
+    content: "";
+    position: absolute;
+    border: 2px dashed var(--divider-color);
+    bottom: 2.6rem;
+    width: 100%;
+    padding-top: 2px;
+    opacity: 70%;
+  }
+  }
+}
+fieldset.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+fieldset.show {
+  opacity: 85%;
+  visibility: visible;
+}
+article.show {
+  opacity: 0.85;
+  visibility: visible;
+}
+article.hide {
+  opacity: 0;
+  visibility: hidden;
+}
