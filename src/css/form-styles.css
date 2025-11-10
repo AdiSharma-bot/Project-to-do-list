@@ -101,7 +101,6 @@ article.entry-type {
       &:active {
         transform: scale(0.9);
       }
-      
     }
   }
 }
@@ -173,6 +172,11 @@ fieldset {
       transform: translateY(-6px);
       &:focus {
         outline: none;
+      }
+      &:-webkit-autofill {
+        background-color: transparent !important;
+        -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+        -webkit-background-color: transparent;
       }
     }
     &::before {
@@ -370,7 +374,7 @@ fieldset {
     display: flex;
     justify-content: space-between;
     & button {
-       background-color: transparent;
+      background-color: transparent;
       border: none;
       font-family: var(--header-font);
       font-size: 0.7rem;
@@ -493,7 +497,6 @@ fieldset.log-and-briefing {
         transform: scale(0.9);
       }
     }
-    
   }
 }
 fieldset.tape-assigning {
@@ -613,7 +616,7 @@ fieldset.tape-name-assign {
   width: 100%;
   opacity: 0;
   visibility: hidden;
-  
+
   & legend {
     all: initial;
     position: absolute;
@@ -720,17 +723,18 @@ fieldset.tape-name-assign {
         transform: scale(0.9);
       }
     }
-     &::before {
-    content: "";
-    position: absolute;
-    border: 2px dashed var(--divider-color);
-    bottom: 2.6rem;
-    width: 100%;
-    padding-top: 2px;
-    opacity: 70%;
-  }
+    &::before {
+      content: "";
+      position: absolute;
+      border: 2px dashed var(--divider-color);
+      bottom: 2.6rem;
+      width: 100%;
+      padding-top: 2px;
+      opacity: 70%;
+    }
   }
 }
+
 fieldset.hide {
   opacity: 0;
   visibility: hidden;
