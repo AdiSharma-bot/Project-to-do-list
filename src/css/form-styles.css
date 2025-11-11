@@ -157,7 +157,7 @@ fieldset {
     flex-direction: column;
     padding-left: 2rem;
     opacity: 85%;
-    & input[type="text"] {
+    & input#title {
       border: none;
       caret-color: var(--font-color);
       color: var(--font-color);
@@ -175,8 +175,9 @@ fieldset {
       }
       &:-webkit-autofill {
         background-color: transparent !important;
-        -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-        -webkit-background-color: transparent;
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+        -webkit-text-fill-color: var(--font-color);
+        transition: background-color 5000s ease-in-out 0s;
       }
     }
     &::before {
