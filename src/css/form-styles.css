@@ -157,6 +157,29 @@ fieldset {
     flex-direction: column;
     padding-left: 2rem;
     opacity: 85%;
+    & input#title {
+      border: none;
+      caret-color: var(--font-color);
+      color: var(--font-color);
+      background-color: transparent;
+      width: 55%;
+      outline: none;
+      margin-left: 0.9rem;
+      outline: none;
+      padding-top: 2px;
+      font-family: var(--para-font);
+      font-size: 1.3rem;
+      transform: translateY(-6px);
+      &:focus {
+        outline: none;
+      }
+      &:-webkit-autofill {
+        background-color: transparent !important;
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+        -webkit-text-fill-color: var(--font-color);
+        transition: background-color 5000s ease-in-out 0s;
+      }
+    }
     &::before {
       content: ">";
       display: block;
@@ -712,29 +735,7 @@ fieldset.tape-name-assign {
     }
   }
 }
-input#title {
-      border: none;
-      caret-color: var(--font-color);
-      color: var(--font-color);
-      background-color: transparent;
-      width: 55%;
-      outline: none;
-      margin-left: 0.9rem;
-      outline: none;
-      padding-top: 2px;
-      font-family: var(--para-font);
-      font-size: 1.3rem;
-      transform: translateY(-6px);
-      &:focus {
-        outline: none;
-      }
-      &:-webkit-autofill {
-        background-color: transparent !important;
-        -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-        -webkit-text-fill-color: var(--font-color);
-        transition: background-color 5000s ease-in-out 0s;
-      }
-    }
+
 fieldset.hide {
   opacity: 0;
   visibility: hidden;
